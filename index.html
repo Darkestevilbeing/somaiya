@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Somaiya's Space 🎀</title>
+    <title>Somaiya's Hello Kitty Wellness Space 🎀</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -15,6 +15,34 @@
             --soft-green: #e6ffe6;
             --cream: #fff8f0;
             --shadow: rgba(255, 105, 180, 0.3);
+            --body-background: linear-gradient(45deg, var(--pastel-pink), var(--soft-green), var(--cream));
+            --nav-background: rgba(255, 255, 255, 0.95);
+            --text-color: #333;
+            --subtitle-color: #666;
+            --card-background: rgba(255, 255, 255, 0.95);
+            --modal-background: white;
+            --button-background: linear-gradient(135deg, var(--hello-kitty-pink), var(--mint-green));
+            --button-text: white;
+            --mood-option-background: var(--pastel-pink);
+            --tip-item-background: linear-gradient(135deg, var(--pastel-pink), var(--soft-green));
+            --personal-note-background: linear-gradient(135deg, var(--cream), var(--pastel-pink));
+            --journal-entry-background: var(--soft-pink);
+            --title-color: var(--hello-kitty-pink);
+        }
+
+        .dark-mode {
+            --body-background: #121212;
+            --nav-background: rgba(18, 18, 18, 0.95);
+            --text-color: white;
+            --subtitle-color: white;
+            --card-background: #1e1e1e;
+            --modal-background: #333;
+            --button-background: linear-gradient(135deg, #ff69b4, #66cc99);
+            --button-text: white;
+            --mood-option-background: #333;
+            --tip-item-background: linear-gradient(135deg, #444, #555);
+            --personal-note-background: linear-gradient(135deg, #333, #444);
+            --journal-entry-background: #444;
         }
 
         * {
@@ -25,12 +53,13 @@
 
         body {
             font-family: 'Quicksand', sans-serif;
-            background: linear-gradient(45deg, var(--pastel-pink), var(--soft-green), var(--cream));
+            background: var(--body-background);
             background-size: 400% 400%;
             animation: gradientShift 8s ease infinite;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+            color: var(--text-color);
         }
 
         @keyframes gradientShift {
@@ -74,7 +103,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--nav-background);
             backdrop-filter: blur(20px);
             z-index: 1000;
             padding: 15px 0;
@@ -109,7 +138,7 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: var(--text-color);
             font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
@@ -121,6 +150,69 @@
             color: var(--hello-kitty-pink);
             background: var(--pastel-pink);
             transform: translateY(-2px);
+        }
+
+        .dark-mode-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+            transition: transform 0.3s ease;
+        }
+
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: var(--nav-background);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 1001;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .mood-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-kitty {
+                font-size: 4rem;
+            }
         }
 
         .container {
@@ -145,7 +237,7 @@
         .hero-title {
             font-family: 'Caveat', cursive;
             font-size: 3.5rem;
-            color: var(--hello-kitty-pink);
+            color: var(--title-color);
             margin-bottom: 15px;
             font-weight: 700;
             text-shadow: 0 5px 15px var(--shadow);
@@ -153,7 +245,7 @@
 
         .hero-subtitle {
             font-size: 1.3rem;
-            color: #666;
+            color: var(--subtitle-color);
             margin-bottom: 30px;
             font-weight: 400;
             line-height: 1.6;
@@ -161,7 +253,7 @@
 
         .hero-message {
             background: linear-gradient(135deg, var(--hello-kitty-pink), var(--mint-green));
-            color: white;
+            color: var(--button-text);
             padding: 25px 35px;
             border-radius: 25px;
             font-size: 1.2rem;
@@ -198,7 +290,7 @@
         }
 
         .advanced-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--card-background);
             border-radius: 25px;
             padding: 35px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.1);
@@ -231,6 +323,10 @@
             border-color: var(--soft-pink);
         }
 
+        .advanced-card p {
+            color: var(--text-color);
+        }
+
         .card-header {
             display: flex;
             align-items: center;
@@ -246,7 +342,7 @@
         .card-title {
             font-family: 'Caveat', cursive;
             font-size: 2rem;
-            color: var(--hello-kitty-pink);
+            color: var(--title-color);
             font-weight: 600;
         }
 
@@ -262,7 +358,7 @@
         }
 
         .mood-option {
-            background: var(--pastel-pink);
+            background: var(--mood-option-background);
             border: none;
             padding: 20px;
             border-radius: 20px;
@@ -317,7 +413,7 @@
             border-radius: 20px;
             font-style: italic;
             font-size: 1.1rem;
-            color: #333;
+            color: var(--text-color);
             transform: scale(0);
             transition: all 0.3s ease;
         }
@@ -333,7 +429,7 @@
         }
 
         .tip-item {
-            background: linear-gradient(135deg, var(--pastel-pink), var(--soft-green));
+            background: var(--tip-item-background);
             padding: 20px;
             border-radius: 20px;
             cursor: pointer;
@@ -348,7 +444,7 @@
 
         .tip-title {
             font-weight: 600;
-            color: #333;
+            color: var(--text-color);
             margin-bottom: 8px;
             display: flex;
             align-items: center;
@@ -356,7 +452,7 @@
         }
 
         .tip-description {
-            color: #666;
+            color: var(--subtitle-color);
             font-size: 0.95rem;
             line-height: 1.4;
         }
@@ -417,8 +513,8 @@
         }
 
         .kitty-button {
-            background: linear-gradient(135deg, var(--hello-kitty-pink), var(--mint-green));
-            color: white;
+            background: var(--button-background);
+            color: var(--button-text);
             border: none;
             padding: 15px 30px;
             border-radius: 25px;
@@ -506,7 +602,7 @@
         }
 
         .modal-content {
-            background: white;
+            background: var(--modal-background);
             padding: 40px;
             border-radius: 25px;
             text-align: center;
@@ -521,12 +617,15 @@
             transform: scale(1);
         }
 
+        .modal-content p {
+            color: var(--text-color);
+        }
+
         @media (max-width: 768px) {
             .hero-kitty { font-size: 4rem; }
             .hero-title { font-size: 2.5rem; }
             .cards-grid { grid-template-columns: 1fr; gap: 20px; }
             .mood-grid { grid-template-columns: repeat(2, 1fr); }
-            .nav-links { display: none; }
         }
 
         @keyframes slideInUp {
@@ -561,13 +660,13 @@
         }
 
         .personal-note {
-            background: linear-gradient(135deg, var(--cream), var(--pastel-pink));
+            background: var(--personal-note-background);
             padding: 25px;
             border-radius: 20px;
             margin: 30px 0;
             border-left: 5px solid var(--hello-kitty-pink);
             font-style: italic;
-            color: #555;
+            color: var(--text-color);
             position: relative;
         }
 
@@ -577,25 +676,30 @@
             top: -10px;
             right: 20px;
             font-size: 2rem;
-            background: white;
+            background: var(--modal-background);
             padding: 5px;
             border-radius: 50%;
         }
 
-        /* Journal Entries */
         .journal-entry {
-            background: var(--soft-pink);
+            background: var(--journal-entry-background);
             padding: 15px;
             margin-bottom: 15px;
             border-radius: 15px;
             box-shadow: 0 5px 15px var(--shadow);
         }
+
         .journal-entry h4 {
-            color: var(--hello-kitty-pink);
+            color: var(--title-color);
             margin-bottom: 10px;
         }
+
         .journal-entry p {
-            color: #333;
+            color: var(--text-color);
+        }
+
+        .text-secondary {
+            color: var(--subtitle-color);
         }
     </style>
 </head>
@@ -614,6 +718,10 @@
                 <li><a href="#" onclick="showPage('wellness')">Wellness</a></li>
                 <li><a href="#" onclick="showPage('journal')">My Journal</a></li>
             </ul>
+            <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
         </div>
     </nav>
 
@@ -623,7 +731,7 @@
                 <div class="hero-kitty">🐱‍👤💕</div>
                 <h1 class="hero-title">Hey Beautiful Somaiya! 🎀</h1>
                 <p class="hero-subtitle">
-                    Welcome to your personal sanctuary<br>
+                    Welcome to your personal Hello Kitty wellness sanctuary<br>
                     A space created just for you, with all the love and care you deserve
                 </p>
                 <div class="hero-message">
@@ -634,7 +742,7 @@
             <div class="cards-grid">
                 <div class="advanced-card" onclick="showPage('mood')">
                     <div class="card-header">
-                        <div class="card-icon">🌹</div>
+                        <div class="card-icon">🌈</div>
                         <div class="card-title">How Are You Feeling?</div>
                     </div>
                     <p>Let's check in with your beautiful heart today. Your feelings matter, and I'm here to listen and support you through whatever you're experiencing.</p>
@@ -783,458 +891,464 @@
                             <div class="tip-description">Add Epsom salts and your favorite calming scents</div>
                         </div>
                         <div class="tip-item" onclick="showTipDetail('clothes')">
-                           <div class="tip-title">👕 Soft Clothes</div>
-                           <div class="tip-description">Your coziest pajamas and loose, comfortable fabrics</div>
-                       </div>
-                       <div class="tip-item" onclick="showTipDetail('rest')">
-                           <div class="tip-title">😴 Extra Rest</div>
-                           <div class="tip-description">Your body is working hard - give it the rest it deserves</div>
-                       </div>
-                   </div>
-               </div>
-           </div>
+                            <div class="tip-title">👕 Soft Clothes</div>
+                            <div class="tip-description">Your coziest pajamas and loose, comfortable fabrics</div>
+                        </div>
+                        <div class="tip-item" onclick="showTipDetail('rest')">
+                            <div class="tip-title">😴 Extra Rest</div>
+                            <div class="tip-description">Your body is working hard - give it the rest it deserves</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-           <div class="personal-note">
-               <p><strong>Sweet Somaiya,</strong> please don't feel guilty about needing extra care during your period. This isn't weakness - this is your body asking for what it needs, and listening to those needs is actually a sign of wisdom and self-respect. You wouldn't expect a friend to push through pain, so please extend that same kindness to yourself. Rest, pamper yourself, and know that taking care of you is always the right choice. 🌸💕</p>
-           </div>
-       </div>
+            <div class="personal-note">
+                <p><strong>Sweet Somaiya,</strong> please don't feel guilty about needing extra care during your period. This isn't weakness - this is your body asking for what it needs, and listening to those needs is actually a sign of wisdom and self-respect. You wouldn't expect a friend to push through pain, so please extend that same kindness to yourself. Rest, pamper yourself, and know that taking care of you is always the right choice. 🌸💕</p>
+            </div>
+        </div>
 
-       <div id="wellness" class="page">
-           <div class="hero">
-               <div class="hero-kitty">🧘‍♀️✨</div>
-               <h1 class="hero-title">Wellness & Peace 🎀</h1>
-               <p class="hero-subtitle">
-                   Gentle exercises and mindful moments<br>
-                   to help you find calm in the chaos
-               </p>
-           </div>
+        <div id="wellness" class="page">
+            <div class="hero">
+                <div class="hero-kitty">🧘‍♀️✨</div>
+                <h1 class="hero-title">Wellness & Peace 🎀</h1>
+                <p class="hero-subtitle">
+                    Gentle exercises and mindful moments<br>
+                    to help you find calm in the chaos
+                </p>
+            </div>
 
-           <div class="cards-grid">
-               <div class="advanced-card">
-                   <div class="card-header">
-                       <div class="card-icon">🫁</div>
-                       <div class="card-title">Breathing With Me</div>
-                   </div>
-                   <div class="breathing-container">
-                       <p style="color: #666; margin-bottom: 20px;">
-                           When everything feels overwhelming, let's just focus on breathing together. 
-                           You're safe, you're loved, and this moment will pass.
-                       </p>
-                       <div class="breathing-circle" id="breathingCircle">
-                           Ready?
-                       </div>
-                       <button class="kitty-button" onclick="startBreathing()">
-                           Breathe With Me
-                       </button>
-                       <div id="breathingInstructions" style="margin-top: 20px; font-style: italic; color: #666;"></div>
-                   </div>
-               </div>
+            <div class="cards-grid">
+                <div class="advanced-card">
+                    <div class="card-header">
+                        <div class="card-icon">🫁</div>
+                        <div class="card-title">Breathing With Me</div>
+                    </div>
+                    <div class="breathing-container">
+                        <p class="text-secondary">
+                            When everything feels overwhelming, let's just focus on breathing together. 
+                            You're safe, you're loved, and this moment will pass.
+                        </p>
+                        <div class="breathing-circle" id="breathingCircle">
+                            Ready?
+                        </div>
+                        <button class="kitty-button" onclick="startBreathing()">
+                            Breathe With Me
+                        </button>
+                        <div id="breathingInstructions" class="text-secondary" style="margin-top: 20px; font-style: italic;"></div>
+                    </div>
+                </div>
 
-               <div class="advanced-card">
-                   <div class="card-header">
-                       <div class="card-icon">🤸‍♀️</div>
-                       <div class="card-title">Gentle Movement</div>
-                   </div>
-                   <div class="tips-container">
-                       <div class="tip-item" onclick="showMovement('yoga')">
-                           <div class="tip-title">🧘‍♀️ Gentle Yoga</div>
-                           <div class="tip-description">Child's pose and cat-cow stretches for relief</div>
-                       </div>
-                       <div class="tip-item" onclick="showMovement('walk')">
-                           <div class="tip-title">🚶‍♀️ Light Walking</div>
-                           <div class="tip-description">Fresh air and gentle movement can work wonders</div>
-                       </div>
-                       <div class="tip-item" onclick="showMovement('stretch')">
-                           <div class="tip-title">🤲 Simple Stretches</div>
-                           <div class="tip-description">Release tension in your back, neck, and shoulders</div>
-                       </div>
-                   </div>
-               </div>
+                <div class="advanced-card">
+                    <div class="card-header">
+                        <div class="card-icon">🤸‍♀️</div>
+                        <div class="card-title">Gentle Movement</div>
+                    </div>
+                    <div class="tips-container">
+                        <div class="tip-item" onclick="showMovement('yoga')">
+                            <div class="tip-title">🧘‍♀️ Gentle Yoga</div>
+                            <div class="tip-description">Child's pose and cat-cow stretches for relief</div>
+                        </div>
+                        <div class="tip-item" onclick="showMovement('walk')">
+                            <div class="tip-title">🚶‍♀️ Light Walking</div>
+                            <div class="tip-description">Fresh air and gentle movement can work wonders</div>
+                        </div>
+                        <div class="tip-item" onclick="showMovement('stretch')">
+                            <div class="tip-title">🤲 Simple Stretches</div>
+                            <div class="tip-description">Release tension in your back, neck, and shoulders</div>
+                        </div>
+                    </div>
+                </div>
 
-               <div class="advanced-card">
-                   <div class="card-header">
-                       <div class="card-icon">💭</div>
-                       <div class="card-title">Mindful Moments</div>
-                   </div>
-                   <div class="tips-container">
-                       <div class="tip-item" onclick="showMindfulness('gratitude')">
-                           <div class="tip-title">🙏 Gratitude Practice</div>
-                           <div class="tip-description">Three small things that brought you joy today</div>
-                       </div>
-                       <div class="tip-item" onclick="showMindfulness('affirmations')">
-                           <div class="tip-title">✨ Loving Affirmations</div>
-                           <div class="tip-description">Gentle reminders of your worth and strength</div>
-                       </div>
-                       <div class="tip-item" onclick="showMindfulness('visualization')">
-                           <div class="tip-title">🌅 Peaceful Visualization</div>
-                           <div class="tip-description">Imagine yourself somewhere calm and beautiful</div>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </div>
+                <div class="advanced-card">
+                    <div class="card-header">
+                        <div class="card-icon">💭</div>
+                        <div class="card-title">Mindful Moments</div>
+                    </div>
+                    <div class="tips-container">
+                        <div class="tip-item" onclick="showMindfulness('gratitude')">
+                            <div class="tip-title">🙏 Gratitude Practice</div>
+                            <div class="tip-description">Three small things that brought you joy today</div>
+                        </div>
+                        <div class="tip-item" onclick="showMindfulness('affirmations')">
+                            <div class="tip-title">✨ Loving Affirmations</div>
+                            <div class="tip-description">Gentle reminders of your worth and strength</div>
+                        </div>
+                        <div class="tip-item" onclick="showMindfulness('visualization')">
+                            <div class="tip-title">🌅 Peaceful Visualization</div>
+                            <div class="tip-description">Imagine yourself somewhere calm and beautiful</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-       <div id="journal" class="page">
-           <div class="hero">
-               <div class="hero-kitty">📝💕</div>
-               <h1 class="hero-title">Your Safe Space 🎀</h1>
-               <p class="hero-subtitle">
-                   A place for your thoughts, feelings, and everything in between<br>
-                   No judgment, just love and understanding
-               </p>
-           </div>
+        <div id="journal" class="page">
+            <div class="hero">
+                <div class="hero-kitty">📝💕</div>
+                <h1 class="hero-title">Your Safe Space 🎀</h1>
+                <p class="hero-subtitle">
+                    A place for your thoughts, feelings, and everything in between<br>
+                    No judgment, just love and understanding
+                </p>
+            </div>
 
-           <div class="advanced-card">
-               <div class="card-header">
-                   <div class="card-icon">💌</div>
-                   <div class="card-title">Daily Check-In</div>
-               </div>
-               <div style="margin-bottom: 20px;">
-                   <p style="color: #666; margin-bottom: 15px;">How are you feeling right now, beautiful? What's on your heart?</p>
-                   <textarea id="dailyJournal" 
-                             placeholder="Dear Diary... Today I'm feeling... What's been on my mind is... I'm grateful for... I need to remember that..."
-                             style="width: 100%; height: 150px; border: 2px solid var(--pastel-pink); border-radius: 15px; padding: 15px; font-family: inherit; font-size: 1rem; resize: vertical;"></textarea>
-               </div>
-               <button class="kitty-button" onclick="saveJournalEntry()">
-                   Save My Thoughts 💕
-               </button>
-               <div id="journalEntries"></div>
-           </div>
+            <div class="advanced-card">
+                <div class="card-header">
+                    <div class="card-icon">💌</div>
+                    <div class="card-title">Daily Check-In</div>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <p class="text-secondary">How are you feeling right now, beautiful? What's on your heart?</p>
+                    <textarea id="dailyJournal" 
+                              placeholder="Dear Diary... Today I'm feeling... What's been on my mind is... I'm grateful for... I need to remember that..."
+                              style="width: 100%; height: 150px; border: 2px solid var(--pastel-pink); border-radius: 15px; padding: 15px; font-family: inherit; font-size: 1rem; resize: vertical;"></textarea>
+                </div>
+                <button class="kitty-button" onclick="saveJournalEntry()">
+                    Save My Thoughts 💕
+                </button>
+                <div id="journalEntries"></div>
+            </div>
 
-           <div class="cards-grid">
-               <div class="advanced-card">
-                   <div class="card-header">
-                       <div class="card-icon">🌟</div>
-                       <div class="card-title">Gratitude Corner</div>
-                   </div>
-                   <p style="margin-bottom: 15px;">Even on hard days, there's always something small to appreciate:</p>
-                   <div id="gratitudeList">
-                       <div style="margin: 10px 0; padding: 10px; background: var(--soft-green); border-radius: 10px;">
-                           🌸 The warmth of your favorite blanket
-                       </div>
-                       <div style="margin: 10px 0; padding: 10px; background: var(--pastel-pink); border-radius: 10px;">
-                           ☕ That first sip of morning tea or coffee
-                       </div>
-                       <div style="margin: 10px 0; padding: 10px; background: var(--soft-green); border-radius: 10px;">
-                           🎵 A song that made you smile
-                       </div>
-                   </div>
-                   <button class="kitty-button" onclick="addGratitude()">
-                       Add Something I'm Grateful For
-                   </button>
-               </div>
+            <div class="cards-grid">
+                <div class="advanced-card">
+                    <div class="card-header">
+                        <div class="card-icon">🌟</div>
+                        <div class="card-title">Gratitude Corner</div>
+                    </div>
+                    <p class="text-secondary" style="margin-bottom: 15px;">Even on hard days, there's always something small to appreciate:</p>
+                    <div id="gratitudeList">
+                        <div style="margin: 10px 0; padding: 10px; background: var(--soft-green); border-radius: 10px;">
+                            🌸 The warmth of your favorite blanket
+                        </div>
+                        <div style="margin: 10px 0; padding: 10px; background: var(--pastel-pink); border-radius: 10px;">
+                            ☕ That first sip of morning tea or coffee
+                        </div>
+                        <div style="margin: 10px 0; padding: 10px; background: var(--soft-green); border-radius: 10px;">
+                            🎵 A song that made you smile
+                        </div>
+                    </div>
+                    <button class="kitty-button" onclick="addGratitude()">
+                        Add Something I'm Grateful For
+                    </button>
+                </div>
 
-               <div class="advanced-card">
-                   <div class="card-header">
-                       <div class="card-icon">💪</div>
-                       <div class="card-title">Strength Reminders</div>
-                   </div>
-                   <div id="strengthReminders">
-                       <p style="margin: 15px 0; font-style: italic; color: #555;">
-                           "I am stronger than my challenges"
-                       </p>
-                       <p style="margin: 15px 0; font-style: italic; color: #555;">
-                           "I deserve love and kindness, especially from myself"
-                       </p>
-                       <p style="margin: 15px 0; font-style: italic; color: #555;">
-                           "This difficult moment will pass"
-                       </p>
-                       <p style="margin: 15px 0; font-style: italic; color: #555;">
-                           "I am doing the best I can with what I have right now"
-                       </p>
-                   </div>
-                   <button class="kitty-button" onclick="getPersonalAffirmation()">
-                       I Need Some Encouragement
-                   </button>
-               </div>
-           </div>
-       </div>
-   </div>
+                <div class="advanced-card">
+                    <div class="card-header">
+                        <div class="card-icon">💪</div>
+                        <div class="card-title">Strength Reminders</div>
+                    </div>
+                    <div id="strengthReminders">
+                        <p class="text-secondary" style="margin: 15px 0; font-style: italic;">
+                            "I am stronger than my challenges"
+                        </p>
+                        <p class="text-secondary" style="margin: 15px 0; font-style: italic;">
+                            "I deserve love and kindness, especially from myself"
+                        </p>
+                        <p class="text-secondary" style="margin: 15px 0; font-style: italic;">
+                            "This difficult moment will pass"
+                        </p>
+                        <p class="text-secondary" style="margin: 15px 0; font-style: italic;">
+                            "I am doing the best I can with what I have right now"
+                        </p>
+                    </div>
+                    <button class="kitty-button" onclick="getPersonalAffirmation()">
+                        I Need Some Encouragement
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-   <div class="emergency-float">
-       <button class="emergency-btn" onclick="showEmergencySupport()" title="I need a hug right now">
-           🤗
-       </button>
-   </div>
+    <div class="emergency-float">
+        <button class="emergency-btn" onclick="showEmergencySupport()" title="I need a hug right now">
+            🤗
+        </button>
+    </div>
 
-   <div id="emergencyModal" class="modal">
-       <div class="modal-content">
-           <div style="font-size: 4rem; margin-bottom: 20px;">🤗💕</div>
-           <h2 style="color: var(--hello-kitty-pink); margin-bottom: 20px;">Virtual Hug for Somaiya</h2>
-           <p style="font-size: 1.2rem; margin-bottom: 20px; line-height: 1.6;">
-               Hey beautiful, I can see you're having a tough moment right now. I want you to know that whatever you're feeling is completely valid. You're not alone, you're not broken, and you're going to get through this just like you always do. 
-           </p>
-           <p style="margin-bottom: 25px; color: #666;">
-               Take a deep breath with me. You are loved, you are worthy, and tomorrow can be different. This hug is filled with all the love and support you deserve. 💕
-           </p>
-           <button class="kitty-button" onclick="closeEmergencyModal()">
-               Thank you, I needed that 🥰
-           </button>
-       </div>
-   </div>
+    <div id="emergencyModal" class="modal">
+        <div class="modal-content">
+            <div style="font-size: 4rem; margin-bottom: 20px;">🤗💕</div>
+            <h2 style="color: var(--hello-kitty-pink); margin-bottom: 20px;">Virtual Hug for Somaiya</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 20px; line-height: 1.6;">
+                Hey beautiful, I can see you're having a tough moment right now. I want you to know that whatever you're feeling is completely valid. You're not alone, you're not broken, and you're going to get through this just like you always do. 
+            </p>
+            <p class="text-secondary" style="margin-bottom: 25px;">
+                Take a deep breath with me. You are loved, you are worthy, and tomorrow can be different. This hug is filled with all the love and support you deserve. 💕
+            </p>
+            <button class="kitty-button" onclick="closeEmergencyModal()">
+                Thank you, I needed that 🥰
+            </button>
+        </div>
+    </div>
 
-   <div id="tipModal" class="modal">
-       <div class="modal-content">
-           <div id="tipContent"></div>
-           <button class="kitty-button" onclick="closeTipModal()">
-               Got it! 💕
-           </button>
-       </div>
-   </div>
+    <div id="tipModal" class="modal">
+        <div class="modal-content">
+            <div id="tipContent"></div>
+            <button class="kitty-button" onclick="closeTipModal()">
+                Got it! 💕
+            </button>
+        </div>
+    </div>
 
-   <script>
-       function initFloatingKitties() {
-           const kittyElements = ['🐱', '🎀', '💕', '🌸', '✨', '💖', '🌈'];
-           const container = document.getElementById('kittyBg');
-           
-           setInterval(() => {
-               const kitty = document.createElement('div');
-               kitty.className = 'floating-kitty';
-               kitty.innerHTML = kittyElements[Math.floor(Math.random() * kittyElements.length)];
-               kitty.style.left = Math.random() * 100 + '%';
-               kitty.style.animationDuration = (Math.random() * 10 + 15) + 's';
-               container.appendChild(kitty);
-               
-               setTimeout(() => {
-                   if (kitty.parentNode) {
-                       kitty.parentNode.removeChild(kitty);
-                   }
-               }, 25000);
-           }, 3000);
-       }
+    <script>
+        function initFloatingKitties() {
+            const kittyElements = ['🐱', '🎀', '💕', '🌸', '✨', '💖', '🌈'];
+            const container = document.getElementById('kittyBg');
+            
+            setInterval(() => {
+                const kitty = document.createElement('div');
+                kitty.className = 'floating-kitty';
+                kitty.innerHTML = kittyElements[Math.floor(Math.random() * kittyElements.length)];
+                kitty.style.left = Math.random() * 100 + '%';
+                kitty.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                container.appendChild(kitty);
+                
+                setTimeout(() => {
+                    if (kitty.parentNode) {
+                        kitty.parentNode.removeChild(kitty);
+                    }
+                }, 25000);
+            }, 3000);
+        }
 
-       function showPage(pageId) {
-           document.querySelectorAll('.page').forEach(page => {
-               page.classList.remove('active');
-           });
-           document.getElementById(pageId).classList.add('active');
-           if (pageId === 'journal') {
-               displayJournalEntries();
-           }
-       }
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            if (pageId === 'journal') {
+                displayJournalEntries();
+            }
+            // Close the menu on mobile
+            document.querySelector('.nav-links').classList.remove('active');
+        }
 
-       function selectMood(mood, emoji, message) {
-           document.querySelectorAll('.mood-option').forEach(option => {
-               option.style.background = '';
-               option.style.color = '';
-           });
-           
-           event.target.closest('.mood-option').style.background = 'var(--hello-kitty-pink)';
-           event.target.closest('.mood-option').style.color = 'white';
-           
-           const responseDiv = document.getElementById('moodResponse');
-           responseDiv.innerHTML = message;
-           responseDiv.classList.add('show');
-           
-           localStorage.setItem('currentMood', mood);
-           localStorage.setItem('moodTimestamp', new Date().toISOString());
-       }
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
 
-       let breathingSession = false;
-       function startBreathing() {
-           if (breathingSession) return;
-           
-           breathingSession = true;
-           const circle = document.getElementById('breathingCircle');
-           const instructions = document.getElementById('breathingInstructions');
-           
-           circle.classList.add('active');
-           
-           const phases = [
-               { text: 'Breathe In Slowly...', instruction: 'Fill your lungs gently, there\'s no rush' },
-               { text: 'Hold Gently...', instruction: 'Just let the air rest in your lungs' },
-               { text: 'Breathe Out Softly...', instruction: 'Release all the tension with your breath' },
-               { text: 'Rest...', instruction: 'You\'re doing beautifully, keep going' }
-           ];
-           
-           let phaseIndex = 0;
-           let cycleCount = 0;
-           
-           const breathingInterval = setInterval(() => {
-               const currentPhase = phases[phaseIndex];
-               circle.textContent = currentPhase.text;
-               instructions.textContent = currentPhase.instruction;
-               
-               phaseIndex = (phaseIndex + 1) % 4;
-               if (phaseIndex === 0) cycleCount++;
-               
-               if (cycleCount >= 6) {
-                   clearInterval(breathingInterval);
-                   circle.textContent = 'Beautiful! 💕';
-                   instructions.textContent = 'You did amazing. Notice how you feel right now - more centered, more peaceful. You can come back to this calm feeling anytime you need it.';
-                   circle.classList.remove('active');
-                   breathingSession = false;
-               }
-           }, 4000);
-       }
+        function selectMood(mood, emoji, message) {
+            document.querySelectorAll('.mood-option').forEach(option => {
+                option.style.background = '';
+                option.style.color = '';
+            });
+            
+            event.target.closest('.mood-option').style.background = 'var(--hello-kitty-pink)';
+            event.target.closest('.mood-option').style.color = 'white';
+            
+            const responseDiv = document.getElementById('moodResponse');
+            responseDiv.innerHTML = message;
+            responseDiv.classList.add('show');
+            
+            localStorage.setItem('currentMood', mood);
+            localStorage.setItem('moodTimestamp', new Date().toISOString());
+        }
 
-       const tipDetails = {
-           heating: {
-               title: '🌡️ Heat Therapy',
-               content: `
-                   <p>Oh honey, heat is going to be your best friend right now! Here's what works:</p>
-                   <ul style="text-align: left; margin: 20px 0;">
-                       <li><strong>Heating pad:</strong> Set it on low-medium and place it on your lower belly or back. 15-20 minutes at a time so you don't burn your skin.</li>
-                       <li><strong>Hot water bottle:</strong> Wrap it in a soft towel and cuddle with it. The weight and warmth are so comforting.</li>
-                       <li><strong>Warm compress:</strong> Even a warm, damp towel can help when you're in a pinch.</li>
-                   </ul>
-                   <p>The heat helps relax those cramping muscles and increases blood flow. It's like giving your uterus a gentle, warm hug. You deserve this comfort, beautiful. 💕</p>
-               `
-           },
-           massage: {
-               title: '👐 Gentle Massage',
-               content: `
-                   <p>Sometimes your body just needs a little loving touch. Here's how to give yourself some relief:</p>
-                   <ul style="text-align: left; margin: 20px 0;">
-                       <li><strong>Lower belly:</strong> Use your fingertips to make small, gentle circles just below your belly button. Follow your intuition about pressure.</li>
-                       <li><strong>Lower back:</strong> If you can reach, or ask someone you trust to help, gentle pressure on your lower back can be amazing.</li>
-                       <li><strong>Pressure points:</strong> There's a spot on your hand between your thumb and index finger - gentle pressure there can help with pain.</li>
-                   </ul>
-                   <p>You don't need to be perfect at this - just listen to your body and do what feels good. Your body will tell you what it needs. 🌸</p>
-               `
-           },
-           tea: {
-               title: '🌿 Healing Herbal Teas',
-               content: `
-                   <p>These warm, soothing drinks are like liquid hugs for your insides:</p>
-                   <ul style="text-align: left; margin: 20px 0;">
-                       <li><strong>Chamomile:</strong> This is your anxiety and cramp fighter. It's gentle and calming, perfect before bed.</li>
-                       <li><strong>Ginger:</strong> Amazing for nausea and has natural anti-inflammatory properties. Fresh ginger in hot water works too!</li>
-                       <li><strong>Peppermint:</strong> Helps with digestive issues and can ease tension headaches.</li>
-                       <li><strong>Raspberry leaf:</strong> If you can find it, this is specifically wonderful for menstrual support.</li>
-                   </ul>
-                   <p>Drink them slowly, hold the warm mug in your hands, and let each sip remind you that you're taking care of yourself. That's something to be proud of. ☕💕</p>
-               `
-           }
-       };
+        let breathingSession = false;
+        function startBreathing() {
+            if (breathingSession) return;
+            
+            breathingSession = true;
+            const circle = document.getElementById('breathingCircle');
+            const instructions = document.getElementById('breathingInstructions');
+            
+            circle.classList.add('active');
+            
+            const phases = [
+                { text: 'Breathe In Slowly...', instruction: 'Fill your lungs gently, there\'s no rush' },
+                { text: 'Hold Gently...', instruction: 'Just let the air rest in your lungs' },
+                { text: 'Breathe Out Softly...', instruction: 'Release all the tension with your breath' },
+                { text: 'Rest...', instruction: 'You\'re doing beautifully, keep going' }
+            ];
+            
+            let phaseIndex = 0;
+            let cycleCount = 0;
+            
+            const breathingInterval = setInterval(() => {
+                const currentPhase = phases[phaseIndex];
+                circle.textContent = currentPhase.text;
+                instructions.textContent = currentPhase.instruction;
+                
+                phaseIndex = (phaseIndex + 1) % 4;
+                if (phaseIndex === 0) cycleCount++;
+                
+                if (cycleCount >= 6) {
+                    clearInterval(breathingInterval);
+                    circle.textContent = 'Beautiful! 💕';
+                    instructions.textContent = 'You did amazing. Notice how you feel right now - more centered, more peaceful. You can come back to this calm feeling anytime you need it.';
+                    circle.classList.remove('active');
+                    breathingSession = false;
+                }
+            }, 4000);
+        }
 
-       function showTipDetail(tipKey) {
-           const modal = document.getElementById('tipModal');
-           const content = document.getElementById('tipContent');
-           const tip = tipDetails[tipKey];
-           
-           if (tip) {
-               content.innerHTML = `
-                   <div style="font-size: 3rem; margin-bottom: 20px;">${tip.title.split(' ')[0]}</div>
-                   <h2 style="color: var(--hello-kitty-pink); margin-bottom: 20px;">${tip.title}</h2>
-                   ${tip.content}
-               `;
-               modal.classList.add('show');
-           }
-       }
+        const tipDetails = {
+            heating: {
+                title: '🌡️ Heat Therapy',
+                content: `
+                    <p>Oh honey, heat is going to be your best friend right now! Here's what works:</p>
+                    <ul style="text-align: left; margin: 20px 0;">
+                        <li><strong>Heating pad:</strong> Set it on low-medium and place it on your lower belly or back. 15-20 minutes at a time so you don't burn your skin.</li>
+                        <li><strong>Hot water bottle:</strong> Wrap it in a soft towel and cuddle with it. The weight and warmth are so comforting.</li>
+                        <li><strong>Warm compress:</strong> Even a warm, damp towel can help when you're in a pinch.</li>
+                    </ul>
+                    <p>The heat helps relax those cramping muscles and increases blood flow. It's like giving your uterus a gentle, warm hug. You deserve this comfort, beautiful. 💕</p>
+                `
+            },
+            massage: {
+                title: '👐 Gentle Massage',
+                content: `
+                    <p>Sometimes your body just needs a little loving touch. Here's how to give yourself some relief:</p>
+                    <ul style="text-align: left; margin: 20px 0;">
+                        <li><strong>Lower belly:</strong> Use your fingertips to make small, gentle circles just below your belly button. Follow your intuition about pressure.</li>
+                        <li><strong>Lower back:</strong> If you can reach, or ask someone you trust to help, gentle pressure on your lower back can be amazing.</li>
+                        <li><strong>Pressure points:</strong> There's a spot on your hand between your thumb and index finger - gentle pressure there can help with pain.</li>
+                    </ul>
+                    <p>You don't need to be perfect at this - just listen to your body and do what feels good. Your body will tell you what it needs. 🌸</p>
+                `
+            },
+            tea: {
+                title: '🌿 Healing Herbal Teas',
+                content: `
+                    <p>These warm, soothing drinks are like liquid hugs for your insides:</p>
+                    <ul style="text-align: left; margin: 20px 0;">
+                        <li><strong>Chamomile:</strong> This is your anxiety and cramp fighter. It's gentle and calming, perfect before bed.</li>
+                        <li><strong>Ginger:</strong> Amazing for nausea and has natural anti-inflammatory properties. Fresh ginger in hot water works too!</li>
+                        <li><strong>Peppermint:</strong> Helps with digestive issues and can ease tension headaches.</li>
+                        <li><strong>Raspberry leaf:</strong> If you can find it, this is specifically wonderful for menstrual support.</li>
+                    </ul>
+                    <p>Drink them slowly, hold the warm mug in your hands, and let each sip remind you that you're taking care of yourself. That's something to be proud of. ☕💕</p>
+                `
+            }
+        };
 
-       function closeTipModal() {
-           document.getElementById('tipModal').classList.remove('show');
-       }
+        function showTipDetail(tipKey) {
+            const modal = document.getElementById('tipModal');
+            const content = document.getElementById('tipContent');
+            const tip = tipDetails[tipKey];
+            
+            if (tip) {
+                content.innerHTML = `
+                    <div style="font-size: 3rem; margin-bottom: 20px;">${tip.title.split(' ')[0]}</div>
+                    <h2 style="color: var(--hello-kitty-pink); margin-bottom: 20px;">${tip.title}</h2>
+                    ${tip.content}
+                `;
+                modal.classList.add('show');
+            }
+        }
 
-       function showEmergencySupport() {
-           document.getElementById('emergencyModal').classList.add('show');
-       }
+        function closeTipModal() {
+            document.getElementById('tipModal').classList.remove('show');
+        }
 
-       function closeEmergencyModal() {
-           document.getElementById('emergencyModal').classList.remove('show');
-       }
+        function showEmergencySupport() {
+            document.getElementById('emergencyModal').classList.add('show');
+        }
 
-       function saveJournalEntry() {
-           const entryText = document.getElementById('dailyJournal').value;
-           if (entryText.trim()) {
-               const timestamp = new Date().toISOString();
-               const entry = { timestamp, text: entryText };
-               let entries = JSON.parse(localStorage.getItem('journalEntries')) || [];
-               entries.push(entry);
-               localStorage.setItem('journalEntries', JSON.stringify(entries));
-               alert('Your thoughts have been saved safely, beautiful. Thank you for sharing with me. 💕');
-               document.getElementById('dailyJournal').value = '';
-               displayJournalEntries();
-           }
-       }
+        function closeEmergencyModal() {
+            document.getElementById('emergencyModal').classList.remove('show');
+        }
 
-       function displayJournalEntries() {
-           const entries = JSON.parse(localStorage.getItem('journalEntries')) || [];
-           const entriesDiv = document.getElementById('journalEntries');
-           entriesDiv.innerHTML = '';
-           if (entries.length === 0) {
-               entriesDiv.innerHTML = '<p style="text-align: center; color: #666;">No entries yet. Start by writing your first thought!</p>';
-           } else {
-               entries.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-               entries.forEach(entry => {
-                   const entryDiv = document.createElement('div');
-                   entryDiv.className = 'journal-entry';
-                   const date = new Date(entry.timestamp).toLocaleString();
-                   entryDiv.innerHTML = `<h4>${date}</h4><p>${entry.text}</p>`;
-                   entriesDiv.appendChild(entryDiv);
-               });
-           }
-       }
+        function saveJournalEntry() {
+            const entryText = document.getElementById('dailyJournal').value;
+            if (entryText.trim()) {
+                const timestamp = new Date().toISOString();
+                const entry = { timestamp, text: entryText };
+                let entries = JSON.parse(localStorage.getItem('journalEntries')) || [];
+                entries.push(entry);
+                localStorage.setItem('journalEntries', JSON.stringify(entries));
+                alert('Your thoughts have been saved safely, beautiful. Thank you for sharing with me. 💕');
+                document.getElementById('dailyJournal').value = '';
+                displayJournalEntries();
+            }
+        }
 
-       function addGratitude() {
-           const gratitude = prompt('What\'s something you\'re grateful for today, no matter how small?');
-           if (gratitude && gratitude.trim()) {
-               const gratitudeList = document.getElementById('gratitudeList');
-               const newItem = document.createElement('div');
-               newItem.style.cssText = 'margin: 10px 0; padding: 10px; background: var(--mint-green); border-radius: 10px; animation: bounceIn 0.6s ease;';
-               newItem.innerHTML = `✨ ${gratitude}`;
-               gratitudeList.appendChild(newItem);
-           }
-       }
+        function displayJournalEntries() {
+            const entries = JSON.parse(localStorage.getItem('journalEntries')) || [];
+            const entriesDiv = document.getElementById('journalEntries');
+            entriesDiv.innerHTML = '';
+            if (entries.length === 0) {
+                entriesDiv.innerHTML = '<p class="text-secondary" style="text-align: center;">No entries yet. Start by writing your first thought!</p>';
+            } else {
+                entries.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                entries.forEach(entry => {
+                    const entryDiv = document.createElement('div');
+                    entryDiv.className = 'journal-entry';
+                    const date = new Date(entry.timestamp).toLocaleString();
+                    entryDiv.innerHTML = `<h4>${date}</h4><p>${entry.text}</p>`;
+                    entriesDiv.appendChild(entryDiv);
+                });
+            }
+        }
 
-       function getPersonalAffirmation() {
-           const affirmations = [
-               "Somaiya, you are doing so much better than you think you are. Every day you choose to keep going is a victory.",
-               "Sweet girl, your feelings are valid and temporary. You've survived every difficult day so far - that makes you incredibly strong.",
-               "You don't have to be perfect to be worthy of love. You're worthy just as you are, right now, in this moment.",
-               "Your body is working so hard to take care of you. Thank it for all it does, even when it doesn't feel perfect.",
-               "You are allowed to rest. You are allowed to feel. You are allowed to take up space. You belong here.",
-               "The world is a little brighter because you're in it, even when you can't see it yourself.",
-               "You've been brave so many times before. You can be brave again, one breath at a time."
-           ];
-           
-           const randomAffirmation = affirmations[Math.floor(Math.random() * affirmations.length)];
-           
-           const modal = document.createElement('div');
-           modal.className = 'modal show';
-           modal.innerHTML = `
-               <div class="modal-content">
-                   <div style="font-size: 3rem; margin-bottom: 20px;">💖</div>
-                   <h2 style="color: var(--hello-kitty-pink); margin-bottom: 20px;">A Message Just For You</h2>
-                   <p style="font-size: 1.3rem; line-height: 1.6; margin-bottom: 25px; font-style: italic;">${randomAffirmation}</p>
-                   <button class="kitty-button" onclick="this.closest('.modal').remove()">
-                       Thank you, I needed to hear that 🥰
-                   </button>
-               </div>
-           `;
-           document.body.appendChild(modal);
-       }
+        function addGratitude() {
+            const gratitude = prompt('What\'s something you\'re grateful for today, no matter how small?');
+            if (gratitude && gratitude.trim()) {
+                const gratitudeList = document.getElementById('gratitudeList');
+                const newItem = document.createElement('div');
+                newItem.style.cssText = 'margin: 10px 0; padding: 10px; background: var(--mint-green); border-radius: 10px; animation: bounceIn 0.6s ease;';
+                newItem.innerHTML = `✨ ${gratitude}`;
+                gratitudeList.appendChild(newItem);
+            }
+        }
 
-       function showMovement(type) {
-           const movements = {
-               yoga: "Let's try some gentle yoga, beautiful. Start with child's pose - kneel down, sit back on your heels, then fold forward with your arms stretched out. Breathe deeply and hold for as long as feels good. Then try cat-cow stretches on your hands and knees. Listen to your body - it knows what it needs. 🧘‍♀️",
-               walk: "Sometimes the best thing we can do is step outside and let the fresh air remind us that we're part of something bigger. Even a 10-minute gentle walk can shift your energy. If you can't go outside, walking around your room counts too! Movement is movement, and every step is taking care of yourself. 🚶‍♀️",
-               stretch: "Your body is holding so much tension right now. Let's help it release: Roll your shoulders back slowly, turn your head gently side to side, reach your arms up to the sky and then let them fall. Touch your toes if you can, or just reach toward them. Your body will thank you for this kindness. 🤲"
-           };
-           
-           alert(movements[type]);
-       }
+        function getPersonalAffirmation() {
+            const affirmations = [
+                "Somaiya, you are doing so much better than you think you are. Every day you choose to keep going is a victory.",
+                "Sweet girl, your feelings are valid and temporary. You've survived every difficult day so far - that makes you incredibly strong.",
+                "You don't have to be perfect to be worthy of love. You're worthy just as you are, right now, in this moment.",
+                "Your body is working so hard to take care of you. Thank it for all it does, even when it doesn't feel perfect.",
+                "You are allowed to rest. You are allowed to feel. You are allowed to take up space. You belong here.",
+                "The world is a little brighter because you're in it, even when you can't see it yourself.",
+                "You've been brave so many times before. You can be brave again, one breath at a time."
+            ];
+            
+            const randomAffirmation = affirmations[Math.floor(Math.random() * affirmations.length)];
+            
+            const modal = document.createElement('div');
+            modal.className = 'modal show';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div style="font-size: 3rem; margin-bottom: 20px;">💖</div>
+                    <h2 style="color: var(--hello-kitty-pink); margin-bottom: 20px;">A Message Just For You</h2>
+                    <p style="font-size: 1.3rem; line-height: 1.6; margin-bottom: 25px; font-style: italic;">${randomAffirmation}</p>
+                    <button class="kitty-button" onclick="this.closest('.modal').remove()">
+                        Thank you, I needed to hear that 🥰
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
 
-       function showMindfulness(type) {
-           const practices = {
-               gratitude: "Let's find three tiny things that brought you even a moment of joy today. Maybe it was your pet, a text from a friend, or even just that your favorite shirt was clean. Gratitude doesn't have to be big to be real. What are your three things? 🙏",
-               affirmations: "Repeat after me, beautiful: 'I am enough exactly as I am.' 'I deserve love and kindness.' 'I am stronger than I know.' 'This feeling will pass.' Say them out loud if you can - your voice speaking kindness to you is powerful. ✨",
-               visualization: "Close your eyes and imagine you're somewhere that feels completely safe and peaceful. Maybe it's a cozy bedroom, a sunny garden, or by the ocean. What do you see? What do you hear? Let yourself rest in this beautiful place for a few minutes. You can return here anytime you need peace. 🌅"
-           };
-           
-           alert(practices[type]);
-       }
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            const icon = document.querySelector('.dark-mode-toggle i');
+            if (isDarkMode) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
 
-       document.addEventListener('DOMContentLoaded', function() {
-           initFloatingKitties();
-       });
+        document.addEventListener('DOMContentLoaded', function() {
+            initFloatingKitties();
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.querySelector('.dark-mode-toggle i').classList.remove('fa-moon');
+                document.querySelector('.dark-mode-toggle i').classList.add('fa-sun');
+            }
+        });
 
-       document.addEventListener('click', function(e) {
-           if (e.target.classList.contains('modal')) {
-               e.target.classList.remove('show');
-           }
-       });
-   </script>
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                e.target.classList.remove('show');
+            }
+        });
+    </script>
 </body>
 </html>
